@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+
+option java_package = "fr.fbernard.grpc.news";
+
+option java_outer_classname = "NewsServiceProto";
+
+package fr.fbernard.grpc.news;
+
+
+//Services
+service NewsService {
+    rpc getNews(NewsRequest) returns (NewsResponse) {}
+    rpc subscribe(SubscribeRequest) returns (stream News) {}
+    rpc postNews (News) returns (News) {}
+}
+
+
+message NewsRequest{
+    Topic topic = 1;
+}
+
+message SubscribeRequest{
+    Topic topic = 1;
+}
+
+message NewsResponse{
+    repeated News news = 1;
+}
+
+message News{
+    string newsId = 1;
+    string tile = 2;
+    string imageUrl = 3;
+    string description = 4;
+    Topic topic = 5;
+}
+
+
+enum Topic{
+    TECH = 0;
+    SPORT = 1;
+    ECONOMY = 2;
+}
+
+
+
+
+
+
+
+

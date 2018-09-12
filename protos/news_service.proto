@@ -31,7 +31,7 @@ message NewsResponse{
 
 message News{
     string newsId = 1;
-    string tile = 2;
+    string title = 2;
     string imageUrl = 3;
     string description = 4;
     Topic topic = 5;

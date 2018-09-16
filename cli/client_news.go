@@ -6,7 +6,7 @@ import (
 	"log"
 	"time"
 
-	pb "github.com/fb64/grpc-fullstack-demo/cli"
+	pb "github.com/fb64/grpc-fullstack-demo/cli/news_service"
 	"google.golang.org/grpc"
 )
 

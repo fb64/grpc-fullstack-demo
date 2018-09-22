@@ -4,4 +4,18 @@
 
 <img src="docs/grpc-fullstack-architecture.svg"> 
 
+## Intro
+
+this example shows how from a single proto file it is possible to easily create multiple client and server implementations in different languages.
+
+## Servers
+
+* [Spring boot (kotlin)](backend/)
+
+## Clients
+
+* [Android Application](android/)
+* [Go Command line client](cli/) 
+* iOS Application (TODO)
+* Web Application (TODO)
 

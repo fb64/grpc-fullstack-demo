@@ -19,7 +19,7 @@ class NewsStore {
                         .setNewsId("${it.name}-$i")
                         .setTitle("${it.name} Title $i")
                         .setDescription("Sport description $i")
-                        .setImageUrl("https://picsum.photos/400/400/?random").build()
+                        .setImageUrl("https://picsum.photos/400/400/?${it.name}-$i").build()
                 newsList.add(news)
             }
             data[it] = newsList

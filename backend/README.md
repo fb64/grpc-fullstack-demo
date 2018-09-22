@@ -2,6 +2,7 @@
 
 ## Build & Run Project
 
+Project required Java 8 (or later) JVM installed.  
 To build and start server use gradle wrapper command : 
 
 Linux/MacOS
@@ -14,7 +15,7 @@ Windows
 ./gradlew.bat bootRun
 ```
 
-By default server run on 6565 port
+By default server run on port 6565
 
 
 ## Libraries used

@@ -7,6 +7,7 @@ import fr.fbernard.grpc.news.Topic
 import fr.fbernard.newsapp.android.data.NewsDataService
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 
 class MainViewModel : ViewModel() {
@@ -15,6 +16,7 @@ class MainViewModel : ViewModel() {
     val addNewsEvent = MutableLiveData<News>()
     val error = MutableLiveData<String>()
     private val disposableList = CompositeDisposable()
+    private var subscriptionDisposable : Disposable? = null
 
 
     fun getNews(topic: Topic){
@@ -32,7 +34,8 @@ class MainViewModel : ViewModel() {
 
 
     fun subscribe(topic: Topic){
-        val disposable = NewsDataService.subscribe(topic)
+        subscriptionDisposable?.dispose()
+        subscriptionDisposable = NewsDataService.subscribe(topic)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
@@ -40,13 +43,12 @@ class MainViewModel : ViewModel() {
                 },{
                     error.postValue(it.localizedMessage)
                 })
-        disposableList.add(disposable)
     }
 
 
     override fun onCleared() {
         super.onCleared()
         disposableList.dispose()
-        disposableList.clear()
+        subscriptionDisposable?.dispose()
     }
 }

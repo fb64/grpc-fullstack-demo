@@ -31,6 +31,12 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
     }
 
 
+    fun addNews(news:News){
+        newsList.add(news)
+        notifyDataSetChanged()
+    }
+
+
     inner class NewsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         fun bind(news:News){
             itemView.newsTitle.text = news.title

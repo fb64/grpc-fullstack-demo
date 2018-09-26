@@ -19,4 +19,4 @@ newscli -h
 
 ## Libraries used
 
-* [urfave cli](tps://github.com/urfave/cl)
+* [urfave cli](https://github.com/urfave/cl)

@@ -7,7 +7,7 @@ import (
 	"os"
 	"time"
 
-	pb "github.com/fb64/grpc-fullstack-demo/cli/news_service"
+	pb "github.com/fb64/grpc-fullstack-demo/newscli/news_service"
 	"google.golang.org/grpc"
 	"gopkg.in/urfave/cli.v1"
 )

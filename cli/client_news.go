@@ -4,30 +4,102 @@ import (
 	"context"
 	"io"
 	"log"
+	"os"
 	"time"
 
 	pb "github.com/fb64/grpc-fullstack-demo/cli/news_service"
 	"google.golang.org/grpc"
+	"gopkg.in/urfave/cli.v1"
 )
 
-const (
-	address = "localhost:6565"
-)
+var client pb.NewsServiceClient
+var connection *grpc.ClientConn
+var connectionError error
 
 func main() {
 
-	//Configure connection (insecure for the moment)
-	conn, err := grpc.Dial(address, grpc.WithInsecure())
-	if err != nil {
-		log.Fatalf("did not connect: %v", err)
-	}
-	defer conn.Close()
-	client := pb.NewNewsServiceClient(conn)
+	var topicString string
+	var address string
 
-	//TODO use cmd arguments to switch operation
-	listNews(client, pb.Topic_TECH)
-	//subscribeTo(client, pb.Topic_TECH)
-	//postNews(client, &pb.News{Title: "Title From GO", ImageUrl: "https://picsum.photos/400/400/?random", Description: "Description From GO", Topic: pb.Topic_TECH})
+	defer closeConnection()
+
+	app := cli.NewApp()
+	app.Name = "client_news"
+	app.Usage = "news grpc client (command line interface)"
+	app.Version = "1.0.0"
+
+	app.Flags = []cli.Flag{
+		cli.StringFlag{
+			Name:        "topic, t",
+			Value:       "TECH",
+			Usage:       "Topic to use : TECH, SPOR, ECONOMY",
+			Destination: &topicString,
+		},
+		cli.StringFlag{
+			Name:        "address, a",
+			Value:       "localhost:6565",
+			Usage:       "address of the news server",
+			Destination: &address,
+		},
+	}
+
+	app.Commands = []cli.Command{
+		{
+			Name:  "list",
+			Usage: "list news of a topic",
+			Action: func(c *cli.Context) error {
+				initClient(address)
+				topic := stringToTopic(topicString)
+				listNews(client, topic)
+				return nil
+			},
+		},
+		{
+			Name:  "add",
+			Usage: "add a news in a topic",
+			Action: func(c *cli.Context) error {
+				initClient(address)
+				topic := stringToTopic(topicString)
+				postNews(client, &pb.News{Title: "Title From GO", ImageUrl: "https://picsum.photos/400/400/?random", Description: "Description From GO", Topic: topic})
+				return nil
+			},
+		},
+		{
+			Name:  "subscribe",
+			Usage: "subscribe to a news's topic for 30s",
+			Action: func(c *cli.Context) error {
+				initClient(address)
+				topic := stringToTopic(topicString)
+				subscribeTo(client, topic)
+				return nil
+			},
+		},
+	}
+
+	appErr := app.Run(os.Args)
+	if appErr != nil {
+		log.Fatal(appErr)
+	}
+}
+
+func initClient(serverAddress string) {
+	connection, connectionError = grpc.Dial(serverAddress, grpc.WithInsecure())
+	if connectionError != nil {
+		log.Fatalf("did not connect: %v", connectionError)
+	}
+	client = pb.NewNewsServiceClient(connection)
+}
+
+func closeConnection() {
+	if connection != nil {
+		connection.Close()
+	}
+
+}
+
+func stringToTopic(topicString string) pb.Topic {
+	topicValue := pb.Topic_value[topicString]
+	return pb.Topic(topicValue)
 }
 
 func listNews(client pb.NewsServiceClient, topic pb.Topic) {
@@ -38,12 +110,12 @@ func listNews(client pb.NewsServiceClient, topic pb.Topic) {
 	if err != nil {
 		log.Fatalf("could get news: %v", err)
 	}
-	log.Printf("Greeting: %s", r.News)
+	log.Printf("%s", r.News)
 }
 
 func subscribeTo(client pb.NewsServiceClient, topic pb.Topic) {
 
-	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+	ctx, cancel := context.WithTimeout(context.Background(), 30*time.Second)
 	defer cancel()
 
 	stream, err := client.Subscribe(ctx, &pb.SubscribeRequest{Topic: pb.Topic_TECH})

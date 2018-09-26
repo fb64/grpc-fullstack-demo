@@ -2,7 +2,7 @@
 
 ## Build & Run Project
 
-Project required Java 8 (or later) JVM installed.  
+Project require Java 8 (or later) JVM installed.  
 To build and start server use gradle wrapper command : 
 
 Linux/MacOS

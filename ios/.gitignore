@@ -21,9 +21,9 @@ Pods/**
 Pods
 Pods/*
 Pods/
-Noor.xcworkspace
-Noor.xcodeproj/xcuserdata/*
-Noor.xcodeproj/project.xcworkspace/xcuserdata/*
+ios.xcworkspace
+ios.xcodeproj/xcuserdata/*
+ios.xcodeproj/project.xcworkspace/xcuserdata/*
 # General
 *.swp
 *.swo

@@ -1,3 +1,47 @@
-PODFILE CHECKSUM: cc4489b19c27007170180425f80c6440c42df94c
+PODS:
+  - BoringSSL (10.0.6):
+    - BoringSSL/Implementation (= 10.0.6)
+    - BoringSSL/Interface (= 10.0.6)
+  - BoringSSL/Implementation (10.0.6):
+    - BoringSSL/Interface (= 10.0.6)
+  - BoringSSL/Interface (10.0.6)
+  - gRPC-Core (1.12.0):
+    - gRPC-Core/Implementation (= 1.12.0)
+    - gRPC-Core/Interface (= 1.12.0)
+  - gRPC-Core/Implementation (1.12.0):
+    - BoringSSL (~> 10.0)
+    - gRPC-Core/Interface (= 1.12.0)
+    - nanopb (~> 0.3)
+  - gRPC-Core/Interface (1.12.0)
+  - nanopb (0.3.8):
+    - nanopb/decode (= 0.3.8)
+    - nanopb/encode (= 0.3.8)
+  - nanopb/decode (0.3.8)
+  - nanopb/encode (0.3.8)
+  - SwiftGRPC (0.6.0):
+    - BoringSSL (~> 10.0)
+    - gRPC-Core (~> 1.12.0)
+    - SwiftProtobuf (~> 1.1.1)
+  - SwiftProtobuf (1.1.2)
+
+DEPENDENCIES:
+  - SwiftGRPC
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - BoringSSL
+    - gRPC-Core
+    - nanopb
+    - SwiftGRPC
+    - SwiftProtobuf
+
+SPEC CHECKSUMS:
+  BoringSSL: e10f92a27043805c01071fe815a5cd98ae8212e7
+  gRPC-Core: 9696b220565b283e021cf2722d473a4a74b7622a
+  nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
+  SwiftGRPC: 465792c0e09dcb083d19d97137cee71b4f4f8b6f
+  SwiftProtobuf: 7147b8ec19c8c0694a45155d989ea9e6dedaf51f
+
+PODFILE CHECKSUM: a0011ba3fa5e293025c9b36b16e2af4e72d8de26
 
 COCOAPODS: 1.5.3

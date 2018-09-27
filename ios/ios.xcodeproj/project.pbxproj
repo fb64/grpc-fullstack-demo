@@ -12,6 +12,8 @@
 		31D4010E215D68ED0027214C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31D4010C215D68ED0027214C /* Main.storyboard */; };
 		31D40110215D68EE0027214C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31D4010F215D68EE0027214C /* Assets.xcassets */; };
 		31D40113215D68EE0027214C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31D40111215D68EE0027214C /* LaunchScreen.storyboard */; };
+		31F1AD3F215D7AA4000E0165 /* news_service.grpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F1AD3D215D7AA4000E0165 /* news_service.grpc.swift */; };
+		31F1AD40215D7AA4000E0165 /* news_service.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F1AD3E215D7AA4000E0165 /* news_service.pb.swift */; };
 		E811BF29D4026E41F5EB6822 /* Pods_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C18CE1A54FC5927F0EAA3F4A /* Pods_ios.framework */; };
 /* End PBXBuildFile section */
 
@@ -23,6 +25,8 @@
 		31D4010F215D68EE0027214C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		31D40112215D68EE0027214C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		31D40114215D68EE0027214C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		31F1AD3D215D7AA4000E0165 /* news_service.grpc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = news_service.grpc.swift; sourceTree = "<group>"; };
+		31F1AD3E215D7AA4000E0165 /* news_service.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = news_service.pb.swift; sourceTree = "<group>"; };
 		3308D74D8FE1CA12077504A7 /* Pods-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.release.xcconfig"; path = "Pods/Target Support Files/Pods-ios/Pods-ios.release.xcconfig"; sourceTree = "<group>"; };
 		3D036E329AAD6DA5861CE0BF /* Pods-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ios/Pods-ios.debug.xcconfig"; sourceTree = "<group>"; };
 		C18CE1A54FC5927F0EAA3F4A /* Pods_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -61,6 +65,8 @@
 		31D40107215D68ED0027214C /* ios */ = {
 			isa = PBXGroup;
 			children = (
+				31F1AD3D215D7AA4000E0165 /* news_service.grpc.swift */,
+				31F1AD3E215D7AA4000E0165 /* news_service.pb.swift */,
 				31D40108215D68ED0027214C /* AppDelegate.swift */,
 				31D4010A215D68ED0027214C /* ViewController.swift */,
 				31D4010C215D68ED0027214C /* Main.storyboard */,
@@ -99,6 +105,7 @@
 				31D40101215D68ED0027214C /* Sources */,
 				31D40102215D68ED0027214C /* Frameworks */,
 				31D40103215D68ED0027214C /* Resources */,
+				F496B8D3D7602AD952C78212 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -178,6 +185,36 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		F496B8D3D7602AD952C78212 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-ios/Pods-ios-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftGRPC/SwiftGRPC.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftProtobuf/SwiftProtobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftGRPC.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftProtobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ios/Pods-ios-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -185,6 +222,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31F1AD3F215D7AA4000E0165 /* news_service.grpc.swift in Sources */,
+				31F1AD40215D7AA4000E0165 /* news_service.pb.swift in Sources */,
 				31D4010B215D68ED0027214C /* ViewController.swift in Sources */,
 				31D40109215D68ED0027214C /* AppDelegate.swift in Sources */,
 			);

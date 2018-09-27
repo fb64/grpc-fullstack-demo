@@ -6,5 +6,5 @@ target 'ios' do
   use_frameworks!
 
   # Pods for ios
-
+  pod 'SwiftGRPC'
 end

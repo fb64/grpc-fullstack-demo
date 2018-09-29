@@ -6,7 +6,7 @@
 
 ## Intro
 
-this example shows how from a single proto file it is possible to easily create multiple client and server implementations in different languages.
+this example shows how from a single proto file it is possible to easily create multiple clients and servers implementations in differents languages.
 
 ## Servers
 
@@ -16,6 +16,6 @@ this example shows how from a single proto file it is possible to easily create 
 
 * [Android Application](android/)
 * [Go Command line client](newscli/) 
-* iOS Application (TODO)
+* [iOS Application](ios/)
 * Web Application (TODO)
 

@@ -18,7 +18,7 @@ class NewsStore {
                 val news = News.newBuilder().setTopic(it)
                         .setNewsId("${it.name}-$i")
                         .setTitle("${it.name} Title $i")
-                        .setDescription("Sport description $i")
+                        .setDescription("${it.name.toLowerCase()} description $i")
                         .setImageUrl("https://picsum.photos/400/400/?${it.name}-$i").build()
                 newsList.add(news)
             }

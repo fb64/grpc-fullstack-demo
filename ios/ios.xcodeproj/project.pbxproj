@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		319F8F4F215EB2620074277A /* NewsDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319F8F4E215EB2620074277A /* NewsDataService.swift */; };
+		319F8F51215EE12D0074277A /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319F8F50215EE12D0074277A /* NewsTableViewCell.swift */; };
 		31D40109215D68ED0027214C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D40108215D68ED0027214C /* AppDelegate.swift */; };
 		31D4010B215D68ED0027214C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D4010A215D68ED0027214C /* ViewController.swift */; };
 		31D4010E215D68ED0027214C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31D4010C215D68ED0027214C /* Main.storyboard */; };
@@ -20,6 +21,7 @@
 
 /* Begin PBXFileReference section */
 		319F8F4E215EB2620074277A /* NewsDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDataService.swift; sourceTree = "<group>"; };
+		319F8F50215EE12D0074277A /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
 		31D40105215D68ED0027214C /* ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ios.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		31D40108215D68ED0027214C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		31D4010A215D68ED0027214C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 				31D40111215D68EE0027214C /* LaunchScreen.storyboard */,
 				31D40114215D68EE0027214C /* Info.plist */,
 				319F8F4E215EB2620074277A /* NewsDataService.swift */,
+				319F8F50215EE12D0074277A /* NewsTableViewCell.swift */,
 			);
 			path = ios;
 			sourceTree = "<group>";
@@ -198,6 +201,9 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-ios/Pods-ios-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
+				"${BUILT_PRODUCTS_DIR}/MDFInternationalization/MDFInternationalization.framework",
+				"${BUILT_PRODUCTS_DIR}/MDFTextAccessibility/MDFTextAccessibility.framework",
+				"${BUILT_PRODUCTS_DIR}/MaterialComponents/MaterialComponents.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftGRPC/SwiftGRPC.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftProtobuf/SwiftProtobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
@@ -208,6 +214,9 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFInternationalization.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFTextAccessibility.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MaterialComponents.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftGRPC.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftProtobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
@@ -227,6 +236,7 @@
 			files = (
 				319F8F4F215EB2620074277A /* NewsDataService.swift in Sources */,
 				31F1AD3F215D7AA4000E0165 /* news_service.grpc.swift in Sources */,
+				319F8F51215EE12D0074277A /* NewsTableViewCell.swift in Sources */,
 				31F1AD40215D7AA4000E0165 /* news_service.pb.swift in Sources */,
 				31D4010B215D68ED0027214C /* ViewController.swift in Sources */,
 				31D40109215D68ED0027214C /* AppDelegate.swift in Sources */,

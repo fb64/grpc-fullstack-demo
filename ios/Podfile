@@ -7,4 +7,5 @@ target 'ios' do
 
   # Pods for ios
   pod 'SwiftGRPC'
+  pod 'MaterialComponents/Snackbar'
 end

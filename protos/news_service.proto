@@ -6,7 +6,7 @@ option java_package = "fr.fbernard.grpc.news";
 
 option java_outer_classname = "NewsServiceProto";
 
-package fr.fbernard.grpc.news;
+package demo;
 
 
 //Services

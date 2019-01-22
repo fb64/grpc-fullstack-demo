@@ -17,13 +17,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
     @IBOutlet weak var economyButton: UITabBarItem!
     @IBOutlet weak var tabBar: UITabBar!
 
-    var newsList = [Fr_Fbernard_Grpc_News_News]()
+    var newsList = [Demo_News]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         tabBar.selectedItem = techButton
-        changeTopic(topic: Fr_Fbernard_Grpc_News_Topic.tech)
+        changeTopic(topic: Demo_Topic.tech)
     }
     
     
@@ -57,20 +57,20 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem){
         
-        var topic = Fr_Fbernard_Grpc_News_Topic.tech
+        var topic = Demo_Topic.tech
         
         switch item.tag {
         case 0:
-            topic = Fr_Fbernard_Grpc_News_Topic.tech
+            topic = Demo_Topic.tech
             titleLabel.text = "Tech news"
         case 1:
-            topic = Fr_Fbernard_Grpc_News_Topic.sport
+            topic = Demo_Topic.sport
             titleLabel.text = "Sport news"
         case 2:
-            topic = Fr_Fbernard_Grpc_News_Topic.economy
+            topic = Demo_Topic.economy
             titleLabel.text = "Economy news"
         default:
-            topic = Fr_Fbernard_Grpc_News_Topic.tech
+            topic = Demo_Topic.tech
             titleLabel.text = "Tech news"
         }
         
@@ -78,13 +78,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITabBarDelegate 
     }
     
     
-    private func changeTopic(topic:Fr_Fbernard_Grpc_News_Topic){
+    private func changeTopic(topic:Demo_Topic){
         NewsDataService.shared.subscribe(topic: topic) { addedNews in
             self.newsList.append(addedNews)
             self.tableView.reloadData()
             self.showSnackBar()
         }
-        newsList = NewsDataService.shared.getNews(topic: topic) ?? [Fr_Fbernard_Grpc_News_News]()
+        newsList = NewsDataService.shared.getNews(topic: topic) ?? [Demo_News]()
         tableView.reloadData()
     }
     

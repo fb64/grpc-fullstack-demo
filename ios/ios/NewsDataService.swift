@@ -13,18 +13,18 @@ final class NewsDataService{
     
     static let shared = NewsDataService()
     
-    private let grpcService :Fr_Fbernard_Grpc_News_NewsServiceServiceClient
-    private var addNewsEvent : Fr_Fbernard_Grpc_News_NewsServicesubscribeCall?
+    private let grpcService : Demo_NewsServiceServiceClient
+    private var addNewsEvent : Demo_NewsServicesubscribeCall?
     private var isSubscriptionActive = false
     
     private init(){
-         grpcService = Fr_Fbernard_Grpc_News_NewsServiceServiceClient(address:"localhost:6565",secure:false)
+         grpcService = Demo_NewsServiceServiceClient(address:"localhost:6565",secure:false)
     }
 
     
-    func getNews(topic:Fr_Fbernard_Grpc_News_Topic) -> [Fr_Fbernard_Grpc_News_News]?{
+    func getNews(topic:Demo_Topic) -> [Demo_News]?{
         do {
-            var request = Fr_Fbernard_Grpc_News_NewsRequest()
+            var request = Demo_NewsRequest()
             request.topic = topic
             let response = try grpcService.getNews(request)
             return response.news
@@ -34,10 +34,10 @@ final class NewsDataService{
     }
     
     
-    func subscribe(topic:Fr_Fbernard_Grpc_News_Topic,completion: @escaping (Fr_Fbernard_Grpc_News_News) -> Void ){
+    func subscribe(topic:Demo_Topic,completion: @escaping (Demo_News) -> Void ){
         do{
             cancelSubscription()
-            var request = Fr_Fbernard_Grpc_News_SubscribeRequest()
+            var request = Demo_SubscribeRequest()
             request.topic = topic
             addNewsEvent = try grpcService.subscribe(request) { (CallResult) in
                 self.isSubscriptionActive = false

@@ -19,7 +19,7 @@ fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAP
   typealias Version = _2
 }
 
-enum Fr_Fbernard_Grpc_News_Topic: SwiftProtobuf.Enum {
+enum Demo_Topic: SwiftProtobuf.Enum {
   typealias RawValue = Int
   case tech // = 0
   case sport // = 1
@@ -52,9 +52,9 @@ enum Fr_Fbernard_Grpc_News_Topic: SwiftProtobuf.Enum {
 
 #if swift(>=4.2)
 
-extension Fr_Fbernard_Grpc_News_Topic: CaseIterable {
+extension Demo_Topic: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  static var allCases: [Fr_Fbernard_Grpc_News_Topic] = [
+  static var allCases: [Demo_Topic] = [
     .tech,
     .sport,
     .economy,
@@ -63,43 +63,43 @@ extension Fr_Fbernard_Grpc_News_Topic: CaseIterable {
 
 #endif  // swift(>=4.2)
 
-struct Fr_Fbernard_Grpc_News_NewsRequest {
+struct Demo_NewsRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var topic: Fr_Fbernard_Grpc_News_Topic = .tech
+  var topic: Demo_Topic = .tech
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
   init() {}
 }
 
-struct Fr_Fbernard_Grpc_News_SubscribeRequest {
+struct Demo_SubscribeRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var topic: Fr_Fbernard_Grpc_News_Topic = .tech
+  var topic: Demo_Topic = .tech
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
   init() {}
 }
 
-struct Fr_Fbernard_Grpc_News_NewsResponse {
+struct Demo_NewsResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  var news: [Fr_Fbernard_Grpc_News_News] = []
+  var news: [Demo_News] = []
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
   init() {}
 }
 
-struct Fr_Fbernard_Grpc_News_News {
+struct Demo_News {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -112,7 +112,7 @@ struct Fr_Fbernard_Grpc_News_News {
 
   var description_p: String = String()
 
-  var topic: Fr_Fbernard_Grpc_News_Topic = .tech
+  var topic: Demo_Topic = .tech
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -121,9 +121,9 @@ struct Fr_Fbernard_Grpc_News_News {
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-fileprivate let _protobuf_package = "fr.fbernard.grpc.news"
+fileprivate let _protobuf_package = "demo"
 
-extension Fr_Fbernard_Grpc_News_Topic: SwiftProtobuf._ProtoNameProviding {
+extension Demo_Topic: SwiftProtobuf._ProtoNameProviding {
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "TECH"),
     1: .same(proto: "SPORT"),
@@ -131,7 +131,7 @@ extension Fr_Fbernard_Grpc_News_Topic: SwiftProtobuf._ProtoNameProviding {
   ]
 }
 
-extension Fr_Fbernard_Grpc_News_NewsRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension Demo_NewsRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".NewsRequest"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "topic"),
@@ -153,14 +153,14 @@ extension Fr_Fbernard_Grpc_News_NewsRequest: SwiftProtobuf.Message, SwiftProtobu
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Fr_Fbernard_Grpc_News_NewsRequest, rhs: Fr_Fbernard_Grpc_News_NewsRequest) -> Bool {
+  static func ==(lhs: Demo_NewsRequest, rhs: Demo_NewsRequest) -> Bool {
     if lhs.topic != rhs.topic {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension Fr_Fbernard_Grpc_News_SubscribeRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension Demo_SubscribeRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".SubscribeRequest"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "topic"),
@@ -182,14 +182,14 @@ extension Fr_Fbernard_Grpc_News_SubscribeRequest: SwiftProtobuf.Message, SwiftPr
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Fr_Fbernard_Grpc_News_SubscribeRequest, rhs: Fr_Fbernard_Grpc_News_SubscribeRequest) -> Bool {
+  static func ==(lhs: Demo_SubscribeRequest, rhs: Demo_SubscribeRequest) -> Bool {
     if lhs.topic != rhs.topic {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension Fr_Fbernard_Grpc_News_NewsResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension Demo_NewsResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".NewsResponse"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "news"),
@@ -211,14 +211,14 @@ extension Fr_Fbernard_Grpc_News_NewsResponse: SwiftProtobuf.Message, SwiftProtob
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Fr_Fbernard_Grpc_News_NewsResponse, rhs: Fr_Fbernard_Grpc_News_NewsResponse) -> Bool {
+  static func ==(lhs: Demo_NewsResponse, rhs: Demo_NewsResponse) -> Bool {
     if lhs.news != rhs.news {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension Fr_Fbernard_Grpc_News_News: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension Demo_News: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = _protobuf_package + ".News"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "newsId"),
@@ -260,7 +260,7 @@ extension Fr_Fbernard_Grpc_News_News: SwiftProtobuf.Message, SwiftProtobuf._Mess
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: Fr_Fbernard_Grpc_News_News, rhs: Fr_Fbernard_Grpc_News_News) -> Bool {
+  static func ==(lhs: Demo_News, rhs: Demo_News) -> Bool {
     if lhs.newsID != rhs.newsID {return false}
     if lhs.title != rhs.title {return false}
     if lhs.imageURL != rhs.imageURL {return false}

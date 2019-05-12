@@ -10,7 +10,7 @@ this example shows how from a single proto file it is possible to easily create 
 
 ## Servers
 
-* [Spring boot (kotlin)](backend/)
+* [Kotlin](backends/kotlin-graal)
 
 ## Clients
 

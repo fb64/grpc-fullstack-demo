@@ -1,0 +1,99 @@
+buildscript {
+    ext {
+        kotlinVersion = '1.3.31'
+        protobufGradleVersion = '0.8.8'
+        grpcVersion = '1.20.0'
+        rxgrpcVersion = '0.9.0'
+        rxjavaVersion = '2.2.0'
+    }
+    repositories {
+        mavenCentral()
+    }
+}
+
+
+plugins {
+    id 'org.jetbrains.kotlin.jvm' version '1.3.31'
+    id "com.google.protobuf" version "0.8.8"
+    id 'idea'
+    id 'application'
+}
+
+group 'fr.fbernard.newsapp'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
+}
+
+compileKotlin {
+    kotlinOptions {
+        freeCompilerArgs = ["-Xjsr305=strict"]
+        jvmTarget = "1.8"
+        noJdk = false
+        noStdlib = false
+    }
+}
+compileTestKotlin {
+    kotlinOptions {
+        freeCompilerArgs = ["-Xjsr305=strict"]
+        jvmTarget = "1.8"
+    }
+}
+
+
+sourceSets {
+    generated{
+        java.srcDir "${buildDir}/generated/src/proto/"
+    }
+    main {
+        proto {
+            srcDir '../../protos/'
+        }
+    }
+}
+
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'fr.fbernard.newsapp.backend.NewsAppServer'
+    }
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
+
+dependencies{
+    compile "io.grpc:grpc-netty:$grpcVersion"
+    compile "io.grpc:grpc-protobuf:$grpcVersion"
+    compile "io.grpc:grpc-stub:$grpcVersion"
+
+    compile "com.salesforce.servicelibs:rxgrpc-stub:$rxgrpcVersion"
+    compile "io.reactivex.rxjava2:rxjava:$rxjavaVersion"
+
+    compileOnly "com.oracle.substratevm:svm:1.0.0-rc15"
+}
+
+mainClassName = "fr.fbernard.newsapp.backend.NewsAppServer"
+
+protobuf {
+    protoc { artifact = 'com.google.protobuf:protoc:3.7.0' }
+    plugins {
+        grpc { artifact = "io.grpc:protoc-gen-grpc-java:${grpcVersion}" }
+        rxgrpc { artifact = "com.salesforce.servicelibs:rxgrpc:${rxgrpcVersion}:jdk8@jar" }
+    }
+    generateProtoTasks {
+        all()*.plugins {
+            grpc {}
+            rxgrpc{}
+        }
+    }
+}
+
+task nativeImage(dependsOn: jar, type: Exec) {
+    commandLine 'native-image' ,"-jar", "$jar.archivePath",  "-H:ReflectionConfigurationFiles=$project.rootDir/graal-reflection.json" ,"--delay-class-initialization-to-runtime=io.netty.handler.codec.http2.Http2CodecUtil,io.netty.handler.codec.http2.DefaultHttp2FrameWriter",  "-H:+ReportExceptionStackTraces", "--allow-incomplete-classpath"
+}

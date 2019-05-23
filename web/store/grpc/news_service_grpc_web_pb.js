@@ -217,5 +217,6 @@ proto.demo.NewsServicePromiseClient.prototype.postNews =
 };
 
 
-module.exports = proto.demo;
+//module.exports = proto.demo;
+export default proto.demo
 

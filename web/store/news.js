@@ -1,6 +1,7 @@
-const { NewsRequest, SubscribeRequest } = require('./grpc/news_service_pb.js')
-const { NewsServiceClient } = require('./grpc/news_service_grpc_web_pb.js')
-const newsService = new NewsServiceClient('http://localhost:3000/grpc')
+import { NewsRequest, SubscribeRequest } from './grpc/news_service_pb.js'
+import grpc from './grpc/news_service_grpc_web_pb.js'
+
+const newsService = new grpc.NewsServiceClient('http://localhost:3000/grpc')
 let currentSubscription = null
 
 export const state = () => ({

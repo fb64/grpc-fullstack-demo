@@ -18,10 +18,10 @@
     "bootstrap-vue": "^2.0.0-rc.11",
     "cross-env": "^5.2.0",
     "google-protobuf": "^3.7.0-rc.3",
-    "grpc-web": "^1.0.3",
+    "grpc-web": "^1.0.4",
     "grpc-web-middleware": "^0.2.3",
     "koa": "^2.6.2",
-    "nuxt": "^2.4.0"
+    "nuxt": "^2.7.1"
   },
   "devDependencies": {
     "nodemon": "^1.18.9",

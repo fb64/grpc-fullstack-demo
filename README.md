@@ -15,7 +15,7 @@ this example shows how from a single proto file it is possible to easily create 
 ## Clients
 
 * [Android Application](android/)
-* [Go Command line client](newscli/) 
+* [Go Command line client](newscli/)
 * [iOS Application](ios/)
-* Web Application (TODO)
+* [Web Application](web/)
 

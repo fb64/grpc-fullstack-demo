@@ -6,7 +6,8 @@ let currentSubscription = null
 
 export const state = () => ({
   newsList: [],
-  topic: null
+  topic: null,
+  breakingNews: null
 })
 
 export const mutations = {
@@ -15,6 +16,7 @@ export const mutations = {
   },
   pushNews(state, news) {
     state.newsList.push(news)
+    state.breakingNews = news
   },
   updateTopic(state, topic) {
     state.topic = topic

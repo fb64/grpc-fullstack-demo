@@ -1,8 +1,12 @@
 # news-webapp
 
+<img src="../docs/web_news.png" width="200">  <img src="../docs/web_news_added.png" width="200"> 
+
+
 > News webapp with grpc-web
 
-## Build Setup
+
+## Build and Run
 
 ``` bash
 # install dependencies
@@ -20,3 +24,9 @@ $ npm run generate
 ```
 
 For detailed explanation on how things work, checkout [Nuxt.js docs](https://nuxtjs.org).
+
+## Used Stack
+* [NuxtJS](https://nuxtjs.org/)
+* [Bootstrap-Vue](https://bootstrap-vue.js.org/)
+* [grpc-web](https://github.com/grpc/grpc-web)
+* [grpc-web-middleware](https://github.com/fb64/grpc-web-middleware)

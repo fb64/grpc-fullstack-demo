@@ -19,7 +19,7 @@ By default server run on port 6565
 
 
 ## Build & Run native binary with GraalVM
-[GraalVM](https://www.graalvm.org/) is required to build native binary
+[GraalVM](https://www.graalvm.org/) >= 19.x is required to build native binary
   
 Use gradle nativeImage custom task: 
 ```

@@ -21,23 +21,23 @@
     "grpc-web": "^1.0.4",
     "grpc-web-middleware": "^0.2.3",
     "koa": "^2.6.2",
-    "nuxt": "^2.7.1"
+    "nuxt": "^2.9.2"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^0.0.1",
     "babel-eslint": "^8.2.1",
     "eslint": "^5.16.0",
     "eslint-config-prettier": "^3.1.0",
-    "eslint-config-standard": ">=12.0.0",
-    "eslint-loader": "^2.0.0",
-    "eslint-plugin-import": "^2.18.0",
-    "eslint-plugin-jest": "^22.7.1",
-    "eslint-plugin-node": "^9.1.0",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-loader": "^2.2.1",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jest": "^22.17.0",
+    "eslint-plugin-node": "^9.2.0",
     "eslint-plugin-prettier": "2.6.2",
     "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-standard": ">=4.0.0",
+    "eslint-plugin-standard": "^4.0.1",
     "eslint-plugin-vue": "^5.2.3",
-    "nodemon": "^1.18.9",
+    "nodemon": "^1.19.2",
     "prettier": "1.14.3"
   }
 }

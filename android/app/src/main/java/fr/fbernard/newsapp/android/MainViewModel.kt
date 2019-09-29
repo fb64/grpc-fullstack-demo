@@ -1,7 +1,7 @@
 package fr.fbernard.newsapp.android
 
-import android.arch.lifecycle.MutableLiveData
-import android.arch.lifecycle.ViewModel
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import fr.fbernard.grpc.news.News
 import fr.fbernard.grpc.news.Topic
 import fr.fbernard.newsapp.android.data.NewsDataService

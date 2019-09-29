@@ -1,9 +1,10 @@
 package fr.fbernard.newsapp.android
 
-import android.support.v7.widget.RecyclerView
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import fr.fbernard.grpc.news.News
 import kotlinx.android.synthetic.main.item_news.view.*

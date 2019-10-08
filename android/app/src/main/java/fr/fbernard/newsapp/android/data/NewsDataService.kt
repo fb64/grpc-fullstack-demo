@@ -8,9 +8,6 @@ import io.reactivex.Single
 
 object NewsDataService {
 
-    init {
-    }
-
     private val newsGrpcService =  RxNewsServiceGrpc.newRxStub(
             ManagedChannelBuilder.forAddress(BuildConfig.GRPC_NEWS_HOST,BuildConfig.GRPC_NEWS_PORT)
             .usePlaintext()

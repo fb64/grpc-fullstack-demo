@@ -1,66 +1,81 @@
 PODS:
-  - BoringSSL (10.0.6):
-    - BoringSSL/Implementation (= 10.0.6)
-    - BoringSSL/Interface (= 10.0.6)
-  - BoringSSL/Implementation (10.0.6):
-    - BoringSSL/Interface (= 10.0.6)
-  - BoringSSL/Interface (10.0.6)
-  - gRPC-Core (1.12.0):
-    - gRPC-Core/Implementation (= 1.12.0)
-    - gRPC-Core/Interface (= 1.12.0)
-  - gRPC-Core/Implementation (1.12.0):
-    - BoringSSL (~> 10.0)
-    - gRPC-Core/Interface (= 1.12.0)
+  - BoringSSL-GRPC (0.0.3):
+    - BoringSSL-GRPC/Implementation (= 0.0.3)
+    - BoringSSL-GRPC/Interface (= 0.0.3)
+  - BoringSSL-GRPC/Implementation (0.0.3):
+    - BoringSSL-GRPC/Interface (= 0.0.3)
+  - BoringSSL-GRPC/Interface (0.0.3)
+  - gRPC-Core (1.19.0):
+    - gRPC-Core/Implementation (= 1.19.0)
+    - gRPC-Core/Interface (= 1.19.0)
+  - gRPC-Core/Implementation (1.19.0):
+    - BoringSSL-GRPC (= 0.0.3)
+    - gRPC-Core/Interface (= 1.19.0)
     - nanopb (~> 0.3)
-  - gRPC-Core/Interface (1.12.0)
-  - MaterialComponents/AnimationTiming (65.0.0)
-  - MaterialComponents/Buttons (65.0.0):
+  - gRPC-Core/Interface (1.19.0)
+  - MaterialComponents/AnimationTiming (89.0.0)
+  - MaterialComponents/Buttons (89.0.0):
+    - MaterialComponents/Elevation
     - MaterialComponents/Ink
     - MaterialComponents/private/Math
-    - MaterialComponents/private/Shapes
+    - MaterialComponents/Ripple
     - MaterialComponents/ShadowElevations
     - MaterialComponents/ShadowLayer
+    - MaterialComponents/Shapes
     - MaterialComponents/Typography
     - MDFInternationalization
     - MDFTextAccessibility
-  - MaterialComponents/Ink (65.0.0):
+  - MaterialComponents/Elevation (89.0.0):
+    - MaterialComponents/private/Color
     - MaterialComponents/private/Math
-  - MaterialComponents/OverlayWindow (65.0.0):
+  - MaterialComponents/Ink (89.0.0):
+    - MaterialComponents/private/Color
+    - MaterialComponents/private/Math
+  - MaterialComponents/OverlayWindow (89.0.0):
     - MaterialComponents/private/Application
-  - MaterialComponents/private/Application (65.0.0)
-  - MaterialComponents/private/KeyboardWatcher (65.0.0):
+  - MaterialComponents/private/Application (89.0.0)
+  - MaterialComponents/private/Color (89.0.0)
+  - MaterialComponents/private/KeyboardWatcher (89.0.0):
     - MaterialComponents/private/Application
-  - MaterialComponents/private/Math (65.0.0)
-  - MaterialComponents/private/Overlay (65.0.0)
-  - MaterialComponents/private/Shapes (65.0.0):
+  - MaterialComponents/private/Math (89.0.0)
+  - MaterialComponents/private/Overlay (89.0.0)
+  - MaterialComponents/Ripple (89.0.0):
+    - MaterialComponents/AnimationTiming
+    - MaterialComponents/private/Color
+    - MaterialComponents/private/Math
+  - MaterialComponents/ShadowElevations (89.0.0)
+  - MaterialComponents/ShadowLayer (89.0.0):
+    - MaterialComponents/ShadowElevations
+  - MaterialComponents/Shapes (89.0.0):
+    - MaterialComponents/private/Color
     - MaterialComponents/private/Math
     - MaterialComponents/ShadowLayer
-  - MaterialComponents/ShadowElevations (65.0.0)
-  - MaterialComponents/ShadowLayer (65.0.0):
-    - MaterialComponents/ShadowElevations
-  - MaterialComponents/Snackbar (65.0.0):
+  - MaterialComponents/Snackbar (89.0.0):
     - MaterialComponents/AnimationTiming
     - MaterialComponents/Buttons
+    - MaterialComponents/Elevation
     - MaterialComponents/OverlayWindow
     - MaterialComponents/private/Application
     - MaterialComponents/private/KeyboardWatcher
+    - MaterialComponents/private/Math
     - MaterialComponents/private/Overlay
+    - MaterialComponents/ShadowElevations
+    - MaterialComponents/ShadowLayer
     - MaterialComponents/Typography
-  - MaterialComponents/Typography (65.0.0):
+  - MaterialComponents/Typography (89.0.0):
     - MaterialComponents/private/Application
     - MaterialComponents/private/Math
-  - MDFInternationalization (1.1.0)
-  - MDFTextAccessibility (1.2.0)
-  - nanopb (0.3.8):
-    - nanopb/decode (= 0.3.8)
-    - nanopb/encode (= 0.3.8)
-  - nanopb/decode (0.3.8)
-  - nanopb/encode (0.3.8)
-  - SwiftGRPC (0.6.0):
-    - BoringSSL (~> 10.0)
-    - gRPC-Core (~> 1.12.0)
-    - SwiftProtobuf (~> 1.1.1)
-  - SwiftProtobuf (1.1.2)
+  - MDFInternationalization (2.0.0)
+  - MDFTextAccessibility (2.0.0)
+  - nanopb (0.3.901):
+    - nanopb/decode (= 0.3.901)
+    - nanopb/encode (= 0.3.901)
+  - nanopb/decode (0.3.901)
+  - nanopb/encode (0.3.901)
+  - SwiftGRPC (0.9.1):
+    - gRPC-Core (~> 1.19.0)
+    - SwiftProtobuf (~> 1.5.0)
+  - SwiftProtobuf (1.5.0)
 
 DEPENDENCIES:
   - MaterialComponents/Snackbar
@@ -68,7 +83,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
-    - BoringSSL
+    - BoringSSL-GRPC
     - gRPC-Core
     - MaterialComponents
     - MDFInternationalization
@@ -78,15 +93,15 @@ SPEC REPOS:
     - SwiftProtobuf
 
 SPEC CHECKSUMS:
-  BoringSSL: e10f92a27043805c01071fe815a5cd98ae8212e7
-  gRPC-Core: 9696b220565b283e021cf2722d473a4a74b7622a
-  MaterialComponents: ea21a99bd4da688f9becf8c3e9416016343cbe32
-  MDFInternationalization: b5b8626628abf026e630e5ebaeee563037712cbb
-  MDFTextAccessibility: 94098925e0853551c5a311ce7c1ecefbe297cdb6
-  nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
-  SwiftGRPC: 465792c0e09dcb083d19d97137cee71b4f4f8b6f
-  SwiftProtobuf: 7147b8ec19c8c0694a45155d989ea9e6dedaf51f
+  BoringSSL-GRPC: db8764df3204ccea016e1c8dd15d9a9ad63ff318
+  gRPC-Core: bd9472c8daa2e414b9f8038ba667bf56ce0e02b8
+  MaterialComponents: 82a817165f3ca2df0e3f321a9d05d08bb152c7f8
+  MDFInternationalization: 010097556d6b09d2c4ea38e0820ea6d37be6a314
+  MDFTextAccessibility: 85c09a1bd9c321f494348e632a25063bcda35a53
+  nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
+  SwiftGRPC: 43d3e8db88f97e7386bd44f159ecdfad02ce3362
+  SwiftProtobuf: 241400280f912735c1e1b9fe675fdd2c6c4d42e2
 
 PODFILE CHECKSUM: 453cd5bb2afd7b13a3511abce7c1abd8831f4715
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.7.1

@@ -13,15 +13,15 @@
     "precommit": "npm run lint"
   },
   "dependencies": {
-    "@koa/cors": "^2.2.3",
-    "bootstrap": "^4.1.3",
-    "bootstrap-vue": "^2.0.0-rc.24",
+    "@koa/cors": "^3.1.0",
+    "bootstrap": "^4.5.2",
+    "bootstrap-vue": "^2.17.3",
     "cross-env": "^5.2.0",
-    "google-protobuf": "^3.7.0-rc.3",
-    "grpc-web": "^1.0.4",
+    "google-protobuf": "^3.13.0",
+    "grpc-web": "^1.2.1",
     "grpc-web-middleware": "^0.2.3",
-    "koa": "^2.6.2",
-    "nuxt": "^2.9.2"
+    "koa": "^2.13.0",
+    "nuxt": "^2.14.5"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^0.0.1",

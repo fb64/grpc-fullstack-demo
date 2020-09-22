@@ -1,10 +1,10 @@
 buildscript {
     ext {
-        kotlinVersion = '1.3.50'
-        protobufGradleVersion = '0.8.10'
-        grpcVersion = '1.23.0'
-        rxgrpcVersion = '1.0.0'
-        rxjavaVersion = '2.2.7'
+        kotlinVersion = '1.4.10'
+        protobufGradleVersion = '0.8.13'
+        grpcVersion = '1.32.1'
+        rxgrpcVersion = '1.0.1'
+        rxjavaVersion = '2.2.12'
     }
     repositories {
         mavenCentral()
@@ -17,10 +17,10 @@ buildscript {
 
 
 plugins {
-    id "com.google.protobuf" version "0.8.10"
+    id "com.google.protobuf" version "0.8.13"
     id 'idea'
     id 'application'
-    id 'org.jetbrains.kotlin.jvm' version '1.3.50'
+    id 'org.jetbrains.kotlin.jvm' version '1.4.10'
 }
 
 group 'fr.fbernard.newsapp'
@@ -77,13 +77,13 @@ dependencies{
     compile "com.salesforce.servicelibs:rxgrpc-stub:$rxgrpcVersion"
     compile "io.reactivex.rxjava2:rxjava:$rxjavaVersion"
 
-    compileOnly "com.oracle.substratevm:svm:1.0.0-rc15"
+    compileOnly "com.oracle.substratevm:svm:19.2.1"
 }
 
 mainClassName = "fr.fbernard.newsapp.backend.NewsAppServer"
 
 protobuf {
-    protoc { artifact = 'com.google.protobuf:protoc:3.9.1' }
+    protoc { artifact = 'com.google.protobuf:protoc:3.13.0' }
     plugins {
         grpc { artifact = "io.grpc:protoc-gen-grpc-java:${grpcVersion}" }
         rxgrpc { artifact = "com.salesforce.servicelibs:rxgrpc:${rxgrpcVersion}" }

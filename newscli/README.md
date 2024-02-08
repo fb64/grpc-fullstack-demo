@@ -6,7 +6,7 @@ Project require Go installed.
 
 1. install newscli : 
 ```SH
-go get github.com/fb64/grpc-fullstack-demo/newscli
+go install github.com/fb64/grpc-fullstack-demo/newscli@latest
 ```
 
 2. Start server (see [backend project](../backend/))

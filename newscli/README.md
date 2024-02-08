@@ -9,7 +9,7 @@ Project require Go installed.
 go install github.com/fb64/grpc-fullstack-demo/newscli@latest
 ```
 
-2. Start server (see [backend project](../backend/))
+2. Start server (see [backend project](../backends/kotlin-graal))
 
 3. run newscli :
 ```

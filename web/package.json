@@ -13,31 +13,25 @@
     "precommit": "npm run lint"
   },
   "dependencies": {
-    "@koa/cors": "^3.1.0",
-    "bootstrap": "^4.5.2",
-    "bootstrap-vue": "^2.17.3",
+    "@koa/cors": "^5.0.0",
+    "bootstrap": "^4.6.2",
+    "bootstrap-vue": "^2.23.0",
     "cross-env": "^5.2.0",
-    "google-protobuf": "^3.13.0",
-    "grpc-web": "^1.2.1",
+    "google-protobuf": "^3.21.2",
+    "grpc-web": "^1.5.0",
     "grpc-web-middleware": "^0.2.3",
-    "koa": "^2.13.0",
-    "nuxt": "^2.14.5"
+    "koa": "^2.15.0",
+    "nuxt": "^2.17"
   },
   "devDependencies": {
-    "@nuxtjs/eslint-config": "^0.0.1",
-    "babel-eslint": "^8.2.1",
-    "eslint": "^5.16.0",
-    "eslint-config-prettier": "^3.1.0",
-    "eslint-config-standard": "^14.1.0",
-    "eslint-loader": "^2.2.1",
-    "eslint-plugin-import": "^2.18.2",
-    "eslint-plugin-jest": "^22.17.0",
-    "eslint-plugin-node": "^9.2.0",
-    "eslint-plugin-prettier": "2.6.2",
-    "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-standard": "^4.0.1",
-    "eslint-plugin-vue": "^5.2.3",
-    "nodemon": "^1.19.2",
-    "prettier": "1.14.3"
+    "@babel/eslint-parser": "^7.19.1",
+    "@nuxtjs/eslint-config": "^11.0.0",
+    "@nuxtjs/eslint-module": "^3.1.0",
+    "eslint": "^8.24.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-nuxt": "^4.0.0",
+    "eslint-plugin-vue": "^9.5.1",
+    "nodemon": "^3.0.3",
+    "prettier": "3.2.5"
   }
 }

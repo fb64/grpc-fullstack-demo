@@ -8,6 +8,9 @@
 
 ## Build and Run
 
+Javascript client files have been generated with `protoc` : https://grpc.io/docs/platforms/web/basics/#generate-protobuf-messages-and-service-client-stub
+
+
 ``` bash
 # install dependencies
 $ npm install

@@ -9,13 +9,13 @@ object NewsStore {
 
     //Populate 10 news by topic
     init {
-        Topic.values().filter { it !=Topic.UNRECOGNIZED }.forEach {
+        Topic.entries.filter { it !=Topic.UNRECOGNIZED }.forEach {
             val newsList = mutableListOf<News>()
             for( i in 0..9){
                 val news = News.newBuilder().setTopic(it)
                     .setNewsId("${it.name}-$i")
                     .setTitle("${it.name} Title $i")
-                    .setDescription("${it.name.toLowerCase()} description $i")
+                    .setDescription("${it.name.lowercase()} description $i")
                     .setImageUrl("https://picsum.photos/400/400/?${it.name}-$i").build()
                 newsList.add(news)
             }

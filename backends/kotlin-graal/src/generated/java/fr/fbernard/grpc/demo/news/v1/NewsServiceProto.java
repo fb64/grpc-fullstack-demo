@@ -94,11 +94,12 @@ public final class NewsServiceProto extends com.google.protobuf.GeneratedFile {
       "\036.demo.news.v1.SubscribeRequest\032\037.demo.n" +
       "ews.v1.SubscribeResponse\"\0000\001\022K\n\010PostNews" +
       "\022\035.demo.news.v1.PostNewsRequest\032\036.demo.n" +
-      "ews.v1.PostNewsResponse\"\000B\203\001\n\035fr.fbernar" +
-      "d.grpc.demo.news.v1B\020NewsServiceProtoP\001\242" +
-      "\002\003DNX\252\002\014Demo.News.V1\312\002\014Demo\\News\\V1\342\002\030De" +
-      "mo\\News\\V1\\GPBMetadata\352\002\016Demo::News::V1b" +
-      "\006proto3"
+      "ews.v1.PostNewsResponse\"\000B\310\001\n\035fr.fbernar" +
+      "d.grpc.demo.news.v1B\020NewsServiceProtoP\001Z" +
+      "Cgithub.com/fb64/grpc-fullstack-demo/new" +
+      "scli/gen/demo/news/v1;newsv1\242\002\003DNX\252\002\014Dem" +
+      "o.News.V1\312\002\014Demo\\News\\V1\342\002\030Demo\\News\\V1\\" +
+      "GPBMetadata\352\002\016Demo::News::V1b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

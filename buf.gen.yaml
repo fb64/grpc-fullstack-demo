@@ -1,0 +1,17 @@
+version: v2
+clean: true
+managed:
+  enabled: true
+  override:
+    - file_option: java_package_prefix
+      value: fr.fbernard.grpc
+plugins:
+  # Kotlin server (backends/kotlin-graal)
+  - remote: buf.build/protocolbuffers/java:v36.2
+    out: backends/kotlin-graal/src/generated/java
+  - remote: buf.build/protocolbuffers/kotlin:v36.2
+    out: backends/kotlin-graal/src/generated/kotlin
+  - remote: buf.build/grpc/java:v1.85.1
+    out: backends/kotlin-graal/src/generated/java
+  - remote: buf.build/grpc/kotlin:v1.5.0
+    out: backends/kotlin-graal/src/generated/kotlin

@@ -1,0 +1,60 @@
+syntax = "proto3";
+
+package demo.news.v1;
+
+// NewsService lets clients read, publish and follow news by topic.
+service NewsService {
+  // GetNews returns every news item stored for a topic.
+  rpc GetNews(GetNewsRequest) returns (GetNewsResponse) {}
+
+  // Subscribe streams news items as they are published for a topic.
+  rpc Subscribe(SubscribeRequest) returns (stream SubscribeResponse) {}
+
+  // PostNews publishes a news item and returns it with its server-assigned id.
+  rpc PostNews(PostNewsRequest) returns (PostNewsResponse) {}
+}
+
+// Topic classifies a news item.
+enum Topic {
+  // When used as a filter, TOPIC_UNSPECIFIED matches every topic.
+  TOPIC_UNSPECIFIED = 0;
+  TOPIC_TECH = 1;
+  TOPIC_SPORT = 2;
+  TOPIC_ECONOMY = 3;
+}
+
+// News is a single news item.
+message News {
+  string id = 1;
+  string title = 2;
+  string image_url = 3;
+  string description = 4;
+  Topic topic = 5;
+}
+
+message GetNewsRequest {
+  Topic topic = 1;
+}
+
+message GetNewsResponse {
+  repeated News news = 1;
+}
+
+message SubscribeRequest {
+  Topic topic = 1;
+}
+
+message SubscribeResponse {
+  News news = 1;
+}
+
+message PostNewsRequest {
+  string title = 1;
+  string image_url = 2;
+  string description = 3;
+  Topic topic = 4;
+}
+
+message PostNewsResponse {
+  News news = 1;
+}

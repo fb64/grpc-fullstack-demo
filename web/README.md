@@ -32,9 +32,6 @@ Both servers read `GRPC_TARGET` (default `http://localhost:6565`); the Hono serv
 podman run --rm -p 3000:3000 -e GRPC_TARGET=http://host.containers.internal:6565 news-web   # or docker
 ```
 
-> Until `grpc-web-middleware` 1.0.0 is published on npm, `package.json` points to a local clone in
-> `../../grpc-web-middleware` (built with `npm run build`), and the container image cannot be built.
-
 ## Code layout
 
 | Path                   | Content |

@@ -18,7 +18,7 @@ run = "buf breaking --against '.git#branch=master,subdir=proto'"
 
 [tasks.lint]
 description = "Run every linter"
-depends = ["proto:lint"]
+depends = ["proto:lint", "cli:lint"]
 
 [tasks.generate]
 description = "Generate the code of every part from the proto files"
@@ -52,6 +52,21 @@ description = "Build the server container image with podman (or docker if podman
 dir = "backends/kotlin-graal"
 run = "$(command -v podman || command -v docker) build -t news-server -f Containerfile ."
 
+[tasks.cli]
+description = "Run the Go command line client, e.g. `mise run cli -- list -t tech`"
+dir = "newscli"
+run = "go run ."
+
+[tasks."cli:test"]
+description = "Run the Go command line client tests"
+dir = "newscli"
+run = "go test ./..."
+
+[tasks."cli:lint"]
+description = "Check formatting and vet the Go command line client"
+dir = "newscli"
+run = ["test -z \"$(gofmt -l .)\" || (gofmt -l .; exit 1)", "go vet ./..."]
+
 [tasks.test]
 description = "Run every test suite"
-depends = ["server:test"]
+depends = ["server:test", "cli:test"]

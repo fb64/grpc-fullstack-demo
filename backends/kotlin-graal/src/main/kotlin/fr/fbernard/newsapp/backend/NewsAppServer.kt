@@ -19,7 +19,13 @@ fun main(args: Array<String>) {
         ?: System.getenv("PORT")?.toIntOrNull()
         ?: DEFAULT_PORT
 
-    val server = newsServer(Grpc.newServerBuilderForPort(port, InsecureServerCredentials.create())).start()
+    val builder = Grpc.newServerBuilderForPort(port, InsecureServerCredentials.create())
+        // Long-lived Subscribe streams: let clients send HTTP/2 keepalive pings every 10s (the default
+        // minimum is 5 minutes) so they detect a dead connection, and ping idle clients to detect theirs.
+        .permitKeepAliveTime(10, TimeUnit.SECONDS)
+        .keepAliveTime(60, TimeUnit.SECONDS)
+        .keepAliveTimeout(10, TimeUnit.SECONDS)
+    val server = newsServer(builder).start()
     println("News gRPC server listening on port ${server.port}")
 
     Runtime.getRuntime().addShutdownHook(

@@ -3,6 +3,9 @@ java = "graalvm-community-25.0.2"
 go = "1.27.4"
 node = "26.13.1"
 buf = "1.75.0"
+# iOS: Xcode provides Swift on macOS; on Linux, mise provides it to build and test NewsKit.
+swift = { version = "6.4.2", os = ["linux"] }
+"aqua:yonaskolb/XcodeGen" = { version = "2.46.0", os = ["macos"] }
 
 [tasks."proto:lint"]
 description = "Lint and check formatting of the proto files"
@@ -109,6 +112,22 @@ description = "Install the Android app on the running emulator or connected devi
 dir = "android"
 tools = { java = "temurin-21.0.13+9.0.LTS" }
 run = "./gradlew installDebug"
+
+[tasks."ios:project"]
+description = "Generate ios/GrpcNews.xcodeproj with XcodeGen (macOS)"
+dir = "ios"
+run = "xcodegen generate"
+
+[tasks."ios:build"]
+description = "Build the iOS app for the simulator (macOS, Xcode)"
+dir = "ios"
+depends = ["ios:project"]
+run = "xcodebuild -project GrpcNews.xcodeproj -scheme GrpcNews -destination 'generic/platform=iOS Simulator' -quiet build"
+
+[tasks."ios:test"]
+description = "Run the NewsKit tests (macOS or Linux); set NEWS_SERVER_PORT to also test against a running server"
+dir = "ios/NewsKit"
+run = "swift test"
 
 [tasks.test]
 description = "Run every test suite"

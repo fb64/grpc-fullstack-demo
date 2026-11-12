@@ -1,0 +1,50 @@
+# XcodeGen project description: `mise run ios:project` generates GrpcNews.xcodeproj (not committed).
+name: GrpcNews
+options:
+  bundleIdPrefix: fr.fbernard.newsapp
+  deploymentTarget:
+    iOS: "18.0"
+packages:
+  NewsKit:
+    path: NewsKit
+settings:
+  base:
+    SWIFT_VERSION: "6.0"
+    MARKETING_VERSION: "2.0.0"
+    CURRENT_PROJECT_VERSION: "2"
+targets:
+  GrpcNews:
+    type: application
+    platform: iOS
+    sources:
+      - GrpcNews
+    dependencies:
+      - package: NewsKit
+    info:
+      path: GrpcNews/Info.plist
+      properties:
+        CFBundleDisplayName: gRPC News
+        UILaunchScreen: {}
+        UISupportedInterfaceOrientations: [UIInterfaceOrientationPortrait]
+        # Needed on a real device to reach a server on the local network.
+        NSLocalNetworkUsageDescription: Connects to the demo gRPC news server on your local network.
+        NewsServerHost: $(NEWS_SERVER_HOST)
+        NewsServerPort: $(NEWS_SERVER_PORT)
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: fr.fbernard.newsapp.ios
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        # The simulator shares the Mac's network; for a device, set the Mac's IP address.
+        NEWS_SERVER_HOST: localhost
+        NEWS_SERVER_PORT: "6565"
+schemes:
+  GrpcNews:
+    build:
+      targets:
+        GrpcNews: all
+    run:
+      config: Debug
+    test:
+      config: Debug
+      targets:
+        - package: NewsKit/NewsKitTests

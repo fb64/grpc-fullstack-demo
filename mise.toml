@@ -1,0 +1,21 @@
+[tools]
+java = "graalvm-community-25.0.2"
+go = "1.27.4"
+node = "26.13.1"
+buf = "1.75.0"
+
+[tasks."proto:lint"]
+description = "Lint and check formatting of the proto files"
+run = ["buf lint", "buf format --diff --exit-code"]
+
+[tasks."proto:format"]
+description = "Format the proto files in place"
+run = "buf format --write"
+
+[tasks."proto:breaking"]
+description = "Check the proto files for breaking changes against master"
+run = "buf breaking --against '.git#branch=master,subdir=proto'"
+
+[tasks.lint]
+description = "Run every linter"
+depends = ["proto:lint"]

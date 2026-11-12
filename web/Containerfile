@@ -1,0 +1,19 @@
+# Build context: web
+FROM node:26-alpine AS build
+WORKDIR /app
+COPY package.json package-lock.json ./
+RUN npm ci
+COPY . .
+RUN npm run build && npm prune --omit=dev
+
+FROM node:26-alpine
+WORKDIR /app
+ENV NODE_ENV=production
+COPY --from=build /app/package.json ./
+COPY --from=build /app/node_modules node_modules
+COPY --from=build /app/server server
+COPY --from=build /app/dist dist
+USER node
+EXPOSE 3000
+# GRPC_TARGET: URL of the gRPC server (default http://localhost:6565)
+CMD ["node", "server/index.ts"]

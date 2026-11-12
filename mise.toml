@@ -92,6 +92,24 @@ description = "Build the web container image with podman (or docker if podman is
 dir = "web"
 run = "$(command -v podman || command -v docker) build -t news-web -f Containerfile ."
 
+[tasks."android:build"]
+description = "Build the Android debug APK (needs the Android SDK, see android/README.md)"
+dir = "android"
+tools = { java = "temurin-21.0.13+9.0.LTS" }
+run = "./gradlew assembleDebug"
+
+[tasks."android:test"]
+description = "Run the Android unit tests (needs the Android SDK)"
+dir = "android"
+tools = { java = "temurin-21.0.13+9.0.LTS" }
+run = "./gradlew testDebugUnitTest"
+
+[tasks."android:install"]
+description = "Install the Android app on the running emulator or connected device"
+dir = "android"
+tools = { java = "temurin-21.0.13+9.0.LTS" }
+run = "./gradlew installDebug"
+
 [tasks.test]
 description = "Run every test suite"
 depends = ["server:test", "cli:test"]

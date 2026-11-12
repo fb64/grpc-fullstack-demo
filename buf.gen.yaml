@@ -30,3 +30,16 @@ plugins:
   - remote: buf.build/bufbuild/es:v2.17.0
     out: web/src/gen
     opt: target=ts
+
+  # Android application (android), protobuf lite runtime
+  - remote: buf.build/protocolbuffers/java:v36.2
+    out: android/app/src/generated/java
+    opt: lite
+  - remote: buf.build/protocolbuffers/kotlin:v36.2
+    out: android/app/src/generated/kotlin
+    opt: lite
+  - remote: buf.build/grpc/java:v1.85.1
+    out: android/app/src/generated/java
+    opt: lite
+  - remote: buf.build/grpc/kotlin:v1.5.0
+    out: android/app/src/generated/kotlin

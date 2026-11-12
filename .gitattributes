@@ -2,3 +2,4 @@
 backends/kotlin-graal/src/generated/** linguist-generated=true
 newscli/gen/** linguist-generated=true
 web/src/gen/** linguist-generated=true
+android/app/src/generated/** linguist-generated=true

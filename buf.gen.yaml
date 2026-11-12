@@ -25,3 +25,8 @@ plugins:
   - remote: buf.build/grpc/go:v1.6.2
     out: newscli/gen
     opt: paths=source_relative
+
+  # Web application (web)
+  - remote: buf.build/bufbuild/es:v2.17.0
+    out: web/src/gen
+    opt: target=ts

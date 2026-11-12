@@ -18,7 +18,7 @@ run = "buf breaking --against '.git#branch=master,subdir=proto'"
 
 [tasks.lint]
 description = "Run every linter"
-depends = ["proto:lint", "cli:lint"]
+depends = ["proto:lint", "cli:lint", "web:check"]
 
 [tasks.generate]
 description = "Generate the code of every part from the proto files"
@@ -66,6 +66,31 @@ run = "go test ./..."
 description = "Check formatting and vet the Go command line client"
 dir = "newscli"
 run = ["test -z \"$(gofmt -l .)\" || (gofmt -l .; exit 1)", "go vet ./..."]
+
+[tasks."web:install"]
+description = "Install the web application dependencies"
+dir = "web"
+run = "npm ci"
+
+[tasks.web]
+description = "Run the web application with hot reload on http://localhost:5173 (needs the server)"
+dir = "web"
+run = ["test -d node_modules || npm ci", "npm run dev"]
+
+[tasks."web:start"]
+description = "Build the web application and serve it with the Hono server on http://localhost:3000"
+dir = "web"
+run = ["test -d node_modules || npm ci", "npm run build", "npm start"]
+
+[tasks."web:check"]
+description = "Type-check the web application (svelte-check)"
+dir = "web"
+run = ["test -d node_modules || npm ci", "npm run check"]
+
+[tasks."web:image"]
+description = "Build the web container image with podman (or docker if podman is missing)"
+dir = "web"
+run = "$(command -v podman || command -v docker) build -t news-web -f Containerfile ."
 
 [tasks.test]
 description = "Run every test suite"

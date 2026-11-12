@@ -1,0 +1,33 @@
+# Runs the gRPC server and the web application: `podman compose up --build` or `docker compose up --build`,
+# then open http://localhost:3000. The server is also reachable on localhost:6565 (CLI, Android, iOS).
+services:
+  server:
+    build:
+      context: backends/kotlin-graal
+      dockerfile: Containerfile
+    image: news-server
+    ports:
+      - "6565:6565"
+    healthcheck:
+      test: ["CMD", "/app/grpc_health_probe", "-addr=localhost:6565"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  web:
+    build:
+      context: web
+      dockerfile: Containerfile
+    image: news-web
+    ports:
+      - "3000:3000"
+    environment:
+      GRPC_TARGET: http://server:6565
+    depends_on:
+      server:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://localhost:3000/"]
+      interval: 5s
+      timeout: 3s
+      retries: 10

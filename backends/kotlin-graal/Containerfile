@@ -7,7 +7,16 @@ RUN ./gradlew --no-daemon --version
 COPY src src
 RUN ./gradlew --no-daemon nativeCompile
 
+# grpc_health_probe calls the standard gRPC health service, for container health checks.
+FROM alpine:3.22 AS health-probe
+ARG TARGETARCH=amd64
+ARG GRPC_HEALTH_PROBE_VERSION=v0.4.62
+ADD https://github.com/grpc-ecosystem/grpc-health-probe/releases/download/${GRPC_HEALTH_PROBE_VERSION}/grpc_health_probe-linux-${TARGETARCH} /grpc_health_probe
+RUN chmod +x /grpc_health_probe
+
 FROM gcr.io/distroless/base-debian13:nonroot
 COPY --from=build /src/build/native/nativeCompile/ /app/
+COPY --from=health-probe /grpc_health_probe /app/grpc_health_probe
 EXPOSE 6565
+HEALTHCHECK --interval=10s --timeout=3s CMD ["/app/grpc_health_probe", "-addr=localhost:6565"]
 ENTRYPOINT ["/app/news-server"]

@@ -1,0 +1,51 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended"],
+  "schedule": ["before 6am on monday"],
+  "packageRules": [
+    {
+      "description": "One pull request per part of the demo",
+      "matchFileNames": ["backends/kotlin-graal/**"],
+      "groupName": "server"
+    },
+    {
+      "matchFileNames": ["newscli/**"],
+      "groupName": "go cli"
+    },
+    {
+      "matchFileNames": ["web/**"],
+      "groupName": "web"
+    },
+    {
+      "matchFileNames": ["android/**"],
+      "groupName": "android"
+    },
+    {
+      "matchFileNames": ["ios/**"],
+      "groupName": "ios"
+    },
+    {
+      "matchFileNames": ["mise.toml"],
+      "groupName": "toolchain"
+    },
+    {
+      "matchManagers": ["github-actions"],
+      "groupName": "github actions"
+    },
+    {
+      "description": "Keep the gRPC runtimes in step with the buf plugins in buf.gen.yaml, which are updated by hand",
+      "matchPackageNames": [
+        "io.grpc:**",
+        "com.google.protobuf:**",
+        "google.golang.org/grpc",
+        "google.golang.org/protobuf",
+        "@bufbuild/protobuf",
+        "@connectrpc/**",
+        "https://github.com/grpc/**",
+        "https://github.com/apple/swift-protobuf.git"
+      ],
+      "groupName": "grpc and protobuf",
+      "dependencyDashboardApproval": true
+    }
+  ]
+}

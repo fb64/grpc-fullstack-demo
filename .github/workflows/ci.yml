@@ -1,0 +1,90 @@
+name: CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+
+# Each job installs only the tools it needs from mise.toml, then runs the same mise tasks as on a laptop.
+jobs:
+  proto:
+    runs-on: ubuntu-latest
+    env:
+      MISE_ENABLE_TOOLS: buf
+    steps:
+      - uses: actions/checkout@v7
+      - uses: jdx/mise-action@v5
+      - run: mise run proto:lint
+      - name: Generated code is up to date
+        run: mise run generate:check
+      - name: No breaking change against master
+        if: github.event_name == 'pull_request'
+        run: mise run proto:breaking
+        env:
+          BUF_BREAKING_AGAINST: https://github.com/${{ github.repository }}.git#branch=master,subdir=proto
+
+  server:
+    runs-on: ubuntu-latest
+    env:
+      MISE_ENABLE_TOOLS: java
+    steps:
+      - uses: actions/checkout@v7
+      - uses: jdx/mise-action@v5
+      - run: mise run server:test
+
+  cli:
+    runs-on: ubuntu-latest
+    env:
+      MISE_ENABLE_TOOLS: go
+    steps:
+      - uses: actions/checkout@v7
+      - uses: jdx/mise-action@v5
+      - run: mise run cli:lint
+      - run: mise run cli:test
+
+  web:
+    runs-on: ubuntu-latest
+    env:
+      MISE_ENABLE_TOOLS: node
+    steps:
+      - uses: actions/checkout@v7
+      - uses: jdx/mise-action@v5
+      - run: mise run web:check
+      - run: npm run build
+        working-directory: web
+
+  android:
+    runs-on: ubuntu-latest
+    env:
+      MISE_ENABLE_TOOLS: java
+    steps:
+      - uses: actions/checkout@v7
+      - uses: jdx/mise-action@v5
+      - name: Install Android SDK platform 37
+        run: yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" "platforms;android-37.0" > /dev/null
+      - run: mise run android:test
+      - run: mise run android:build
+
+  ios:
+    runs-on: macos-latest
+    env:
+      MISE_ENABLE_TOOLS: aqua:yonaskolb/XcodeGen
+    steps:
+      - uses: actions/checkout@v7
+      - uses: jdx/mise-action@v5
+      - run: mise run ios:test
+      - run: mise run ios:build
+
+  images:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Build the server (GraalVM native) and web images, start them, and wait until healthy
+        run: docker compose up --build --detach --wait --wait-timeout 120
+      - name: grpc-web call through the web server
+        run: |
+          # An empty GetNewsRequest in a grpc-web frame; the answer must end with a grpc-status: 0 trailer.
+          printf '\x00\x00\x00\x00\x00' | curl -sf -X POST -H 'content-type: application/grpc-web+proto' \
+            --data-binary @- http://localhost:3000/grpc/demo.news.v1.NewsService/GetNews | grep -a 'grpc-status: 0'
+      - if: failure()
+        run: docker compose logs

@@ -19,3 +19,39 @@ run = "buf breaking --against '.git#branch=master,subdir=proto'"
 [tasks.lint]
 description = "Run every linter"
 depends = ["proto:lint"]
+
+[tasks.generate]
+description = "Generate the code of every part from the proto files"
+run = "buf generate"
+
+[tasks."generate:check"]
+description = "Fail if the committed generated code is out of date"
+depends = ["generate"]
+run = [
+  "git diff --exit-code",
+  "test -z \"$(git ls-files --others --exclude-standard)\" || (git ls-files --others --exclude-standard; exit 1)",
+]
+
+[tasks.server]
+description = "Run the Kotlin gRPC server on the JVM (port 6565)"
+dir = "backends/kotlin-graal"
+run = "./gradlew run"
+
+[tasks."server:native"]
+description = "Build the Kotlin gRPC server as a GraalVM native binary and run it"
+dir = "backends/kotlin-graal"
+run = ["./gradlew nativeCompile", "build/native/nativeCompile/news-server"]
+
+[tasks."server:test"]
+description = "Run the Kotlin gRPC server tests"
+dir = "backends/kotlin-graal"
+run = "./gradlew test"
+
+[tasks."server:image"]
+description = "Build the server container image with podman (or docker if podman is missing)"
+dir = "backends/kotlin-graal"
+run = "$(command -v podman || command -v docker) build -t news-server -f Containerfile ."
+
+[tasks.test]
+description = "Run every test suite"
+depends = ["server:test"]

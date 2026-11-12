@@ -1,0 +1,13 @@
+# Build context: backends/kotlin-graal
+FROM ghcr.io/graalvm/native-image-community:25 AS build
+WORKDIR /src
+COPY gradlew settings.gradle.kts build.gradle.kts gradle.properties ./
+COPY gradle gradle
+RUN ./gradlew --no-daemon --version
+COPY src src
+RUN ./gradlew --no-daemon nativeCompile
+
+FROM gcr.io/distroless/base-debian13:nonroot
+COPY --from=build /src/build/native/nativeCompile/ /app/
+EXPOSE 6565
+ENTRYPOINT ["/app/news-server"]

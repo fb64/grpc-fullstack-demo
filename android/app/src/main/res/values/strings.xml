@@ -1,6 +1,3 @@
 <resources>
-    <string name="app_name">GrpcNewsApp</string>
-    <string name="title_sport">Sport news</string>
-    <string name="title_tech">Tech news</string>
-    <string name="title_economy">Economy news</string>
+    <string name="app_name">gRPC News</string>
 </resources>

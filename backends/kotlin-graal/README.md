@@ -28,7 +28,7 @@ All commands run from the repository root. The server listens on port `6565`
 | `mise run server`        | Run on the JVM                                     |
 | `mise run server:native` | Build the GraalVM native binary (a few minutes), then run it |
 | `mise run server:test`   | Run the tests (in-process gRPC server)             |
-| `mise run server:image`  | Build the `news-server` container image (native binary on distroless) |
+| `mise run server:image`  | Build the `news-server` container image (native binary on distroless, with [grpc_health_probe](https://github.com/grpc-ecosystem/grpc-health-probe) for health checks) |
 
 Run the container image:
 

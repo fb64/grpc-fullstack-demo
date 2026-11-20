@@ -41,11 +41,17 @@
         "google.golang.org/protobuf",
         "@bufbuild/protobuf",
         "@connectrpc/**",
-        "https://github.com/grpc/**",
-        "https://github.com/apple/swift-protobuf.git"
+        "grpc/grpc-swift*",
+        "apple/swift-protobuf"
       ],
       "groupName": "grpc and protobuf",
       "dependencyDashboardApproval": true
+    },
+    {
+      "description": "Update the mise java versions by hand: Renovate proposes versions mise does not have (e.g. 21.0.13+100000002.0.LTS instead of temurin-21.0.13+9.0.LTS)",
+      "matchManagers": ["mise"],
+      "matchDepNames": ["java"],
+      "enabled": false
     }
   ]
 }

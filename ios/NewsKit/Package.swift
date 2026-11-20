@@ -13,7 +13,7 @@ let package = Package(
         .package(url: "https://github.com/grpc/grpc-swift-2.git", from: "2.4.4"),
         .package(url: "https://github.com/grpc/grpc-swift-nio-transport.git", from: "2.12.0"),
         .package(url: "https://github.com/grpc/grpc-swift-protobuf.git", from: "2.5.0"),
-        .package(url: "https://github.com/apple/swift-protobuf.git", from: "1.39.0"),
+        .package(url: "https://github.com/apple/swift-protobuf.git", from: "1.41.0"),
     ],
     targets: [
         .target(

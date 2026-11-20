@@ -45,7 +45,7 @@ plugins:
     out: android/app/src/generated/kotlin
 
   # iOS application (ios/NewsKit), grpc-swift 2
-  - remote: buf.build/apple/swift:v1.39.0
+  - remote: buf.build/apple/swift:v1.41.0
     out: ios/NewsKit/Sources/NewsKit/Generated
     opt: Visibility=Public
   - remote: buf.build/grpc/swift-protobuf:v2.5.0

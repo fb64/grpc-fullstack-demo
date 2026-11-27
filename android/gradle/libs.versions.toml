@@ -1,13 +1,13 @@
 [versions]
-agp = "9.5.1"
+agp = "9.5.3"
 kotlin = "2.4.21"
 coroutines = "1.11.0"
 grpc = "1.85.1"
 grpc-kotlin = "1.5.0"
 protobuf = "4.36.2"
-compose-bom = "2026.09.00"
+compose-bom = "2026.11.01"
 activity = "1.13.0"
-lifecycle = "2.11.0"
+lifecycle = "2.11.1"
 coil = "3.6.3"
 junit = "4.13.2"
 
